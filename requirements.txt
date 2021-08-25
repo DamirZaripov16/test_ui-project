@@ -21,4 +21,3 @@ six
 text-unidecode
 toml
 urllib3
-webdriver-manager
