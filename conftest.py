@@ -1,4 +1,5 @@
 import pytest as pytest
+from selenium.webdriver.chrome.options import Options
 
 from pages.application import Application
 from selenium import webdriver
@@ -26,6 +27,8 @@ def pytest_addoption(parser):
 @pytest.fixture(scope='session')
 def app(request):
     url = request.config.getoption("--url")
-    app = Application(webdriver.Chrome(ChromeDriverManager().install()), url)
+    chrome_options = Options()
+    # chrome_options.add_argument("--headless")
+    app = Application(webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options), url,)
     yield app
     app.quit()
