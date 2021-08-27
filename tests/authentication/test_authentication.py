@@ -19,6 +19,8 @@ class TestAuthenticationPage:
         data = AuthenticationData(username="zaripov.damir@test.ru", password="Sharif1992*")
         app.authentication_page.authorize(data)
         assert app.authentication_page.is_authorized(), "We are not logged in!"
+        app.authentication_page.log_out()
+        assert (AuthenticationConstants.LOGOUT_MESSAGE == app.authentication_page.log_out_check()), "We are logged out!"
 
     def test_authentication_invalid_data(self, app):
         """

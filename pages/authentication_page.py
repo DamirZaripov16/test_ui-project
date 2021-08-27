@@ -38,6 +38,14 @@ class AuthenticationPage(BasePage):
         self.fill_element(self.password_input(), data.password)
         self.click_element(self.submit_button())
 
+    def log_out(self):
+        if self.is_authorized():
+            self.click_element(self.user_menu())
+            self.click_element(self.exit())
+
+    def log_out_check(self):
+        return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK).text
+
     def user_menu_settings(self) -> WebElement:
         return self.find_element(AuthenticationPageLocators.USER_MENU_SETTINGS)
 
