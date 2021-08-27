@@ -47,6 +47,9 @@ class PersonalDataPage(BasePage):
     def submit_button(self) -> WebElement:
         return self.find_element(PersonalDataPageLocators.SUBMIT_BUTTON)
 
+    def successfully_changed_check(self) -> WebElement:
+        return self.find_element(PersonalDataPageLocators.SUCCESSFULLY_CHANGED).text
+
     def input_name(self, name):
         self.fill_element(self.name_input(), name)
 

@@ -1,5 +1,8 @@
+import time
+
 import pytest
 
+from common.constants import PersonalDataConstants
 from models.authenticate import AuthenticationData
 
 
@@ -23,6 +26,8 @@ class TestPersonalData:
         app.authentication_page.go_to_editing_personal_data()
         app.personal_data.edit_personal_data()
         assert app.personal_data.is_changed(), "Personal data is not changed!"
+        assert (PersonalDataConstants.SUCCESSFULLY_CHANGED_MESSAGE == app.personal_data.successfully_changed_check()), \
+            "Changes are not applied"
 
     @pytest.mark.parametrize(
         "data",
@@ -31,7 +36,7 @@ class TestPersonalData:
             {"name": "", "lastname": "Зарипов", "email": "test@test.ru"},
             {"name": "Дамир", "lastname": "", "email": "test@test.ru"},
             {"name": "Дамир", "lastname": "Зарипов", "email": ""},
-            {"name": "Дамир", "lastname": "Зарипов", "email": "test@test.ru"},
+            {"name": "Дамир", "lastname": "Зарипов", "email": "testtest.ru"},
             {"name": "Дамир", "lastname": "Зарипов", "email": "@test.ru"},
         ],
     )

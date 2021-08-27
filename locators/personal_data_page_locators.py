@@ -17,3 +17,4 @@ class PersonalDataPageLocators:
     COUNTRY_SELECT = (By.ID, "id_country")
     TIMEZONE_SELECT = (By.ID, "id_timezone")
     EMAIL_DISPLAY = (By.ID, "id_maildisplay")
+    SUCCESSFULLY_CHANGED = (By.CLASS_NAME, "alert")
