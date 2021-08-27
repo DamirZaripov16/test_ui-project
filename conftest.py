@@ -1,6 +1,7 @@
 import pytest as pytest
 from selenium.webdriver.chrome.options import Options
 
+from models.authenticate import AuthenticationData
 from pages.application import Application
 from selenium import webdriver
 
@@ -22,6 +23,15 @@ def pytest_addoption(parser):
                      action="store",
                      default="Sharif1992*",
                      help="enter the password")
+
+
+@pytest.fixture
+def authorize(app, request):
+    user = request.config.getoption("--username")
+    password = request.config.getoption("--password")
+    app.open_authentication_page()
+    data = AuthenticationData(username=user, password=password)
+    app.authentication_page.authorize(data)
 
 
 @pytest.fixture(scope='session')

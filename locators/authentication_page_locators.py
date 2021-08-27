@@ -14,3 +14,4 @@ class AuthenticationPageLocators:
     LOGIN_ERROR = (By.ID, "loginerrormessage")
     USER_MENU_SETTINGS = (By.ID, "actionmenuaction-5")
     LOG_OUT_CHECK = (By.XPATH, "//div[@class='forgetpass mt-3']/p")
+    LOG_OUT_CHECK_CONFIRM = (By.XPATH, "//button[text()='Выход']")

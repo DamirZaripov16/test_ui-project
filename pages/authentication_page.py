@@ -1,5 +1,6 @@
 from selenium.webdriver.remote.webelement import WebElement
 
+from locators.base_page_locators import BasePageLocators
 from models.authenticate import AuthenticationData
 from pages.base_page import BasePage
 from locators.authentication_page_locators import AuthenticationPageLocators
@@ -11,6 +12,13 @@ class AuthenticationPage(BasePage):
     def is_authorized(self):
         self.find_element(AuthenticationPageLocators.FORM)
         element = self.find_elements(AuthenticationPageLocators.USER_BUTTON)
+        if len(element) > 0:
+            return True
+        return False
+
+    def confirm_exit_window(self):
+        self.find_element(AuthenticationPageLocators.FORM)
+        element = self.find_elements(BasePageLocators.CONFIRM_EXIT_BUTTON)
         if len(element) > 0:
             return True
         return False
@@ -30,10 +38,15 @@ class AuthenticationPage(BasePage):
     def exit(self) -> WebElement:
         return self.find_element(AuthenticationPageLocators.EXIT)
 
+    def confirm_exit(self):
+        return self.find_element(BasePageLocators.CONFIRM_EXIT_BUTTON)
+
     def authorize(self, data: AuthenticationData):
         if self.is_authorized():
             self.click_element(self.user_menu())
             self.click_element(self.exit())
+        if self.confirm_exit_window():
+            self.click_element(self.confirm_exit())
         self.fill_element(self.username_input(), data.username)
         self.fill_element(self.password_input(), data.password)
         self.click_element(self.submit_button())
@@ -45,6 +58,9 @@ class AuthenticationPage(BasePage):
 
     def log_out_check(self):
         return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK).text
+
+    def log_out_check_confirm(self):
+        return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK_CONFIRM)
 
     def user_menu_settings(self) -> WebElement:
         return self.find_element(AuthenticationPageLocators.USER_MENU_SETTINGS)
