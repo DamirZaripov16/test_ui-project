@@ -1,3 +1,4 @@
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -14,6 +15,13 @@ class BasePage:
     def find_elements(self, locator):
         return self.app.driver.find_elements(*locator)
 
+    def find_select_element(self, locator):
+        select_element = Select(self.find_element(locator))
+        return select_element
+
+    def select_value(self, select_element, value):
+        select_element.select_by_value(value)
+        
     def fill_element(self, element, text):
         element.clear()
         if text:
