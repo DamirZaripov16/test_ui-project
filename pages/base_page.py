@@ -22,7 +22,7 @@ class BasePage:
 
     def select_value(self, select_element, value):
         select_element.select_by_value(value)
-        
+
     def fill_element(self, element, text):
         element.clear()
         if text:
