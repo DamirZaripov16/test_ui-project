@@ -1,5 +1,3 @@
-import time
-
 import pytest
 
 from common.constants import AuthenticationConstants

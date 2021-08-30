@@ -6,6 +6,7 @@ configparser
 crayons
 decorator==5.0.9
 Faker
+flake8
 idna
 iniconfig
 packaging
