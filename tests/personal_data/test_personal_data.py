@@ -20,7 +20,8 @@ class TestPersonalData:
         app.authentication_page.go_to_editing_personal_data()
         app.personal_data.edit_personal_data()
         assert app.personal_data.is_changed(), "Personal data is not changed!"
-        assert (PersonalDataConstants.SUCCESSFULLY_CHANGED_MESSAGE == app.personal_data.successfully_changed_check()), \
+        assert (PersonalDataConstants.SUCCESSFULLY_CHANGED_MESSAGE
+                == app.personal_data.successfully_changed_check()), \
             "Changes are not applied"
 
     @pytest.mark.parametrize(
@@ -49,4 +50,5 @@ class TestPersonalData:
             assert app.authentication_page.is_authorized(), "We are not logged in!"
         app.authentication_page.go_to_editing_personal_data()
         app.personal_data.edit_personal_data(**data)
-        assert not app.personal_data.is_changed(), "Personal data should not be changed!"
+        assert not app.personal_data.is_changed(), \
+            "Personal data should not be changed!"

@@ -39,6 +39,7 @@ def app(request):
     url = request.config.getoption("--url")
     chrome_options = Options()
     chrome_options.add_argument("--headless")
-    app = Application(webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options), url,)
+    app = Application(webdriver.Chrome(ChromeDriverManager().install(),
+                                       options=chrome_options), url,)
     yield app
     app.quit()
