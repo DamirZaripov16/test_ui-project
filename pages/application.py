@@ -2,6 +2,7 @@ import logging
 
 from pages.authentication_page import AuthenticationPage
 from pages.personal_data_page import PersonalDataPage
+from pages.sign_up_page import SignUpPage
 
 logger = logging.getLogger("moodle")
 
@@ -12,6 +13,7 @@ class Application:
         self.url = url
         self.authentication_page = AuthenticationPage(self)
         self.personal_data = PersonalDataPage(self)
+        self.sign_up_page = SignUpPage(self)
 
     def open_main_page(self):
         logger.info(f'Opening"{self.url}"')

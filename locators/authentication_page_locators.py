@@ -15,3 +15,4 @@ class AuthenticationPageLocators:
     USER_MENU_SETTINGS = (By.ID, "actionmenuaction-5")
     LOG_OUT_CHECK = (By.XPATH, "//div[@class='forgetpass mt-3']/p")
     LOG_OUT_CHECK_CONFIRM = (By.XPATH, "//button[text()='Выход']")
+    SIGN_UP_BUTTON = (By.CSS_SELECTOR, "#signup > button")
