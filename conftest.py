@@ -1,3 +1,5 @@
+import logging
+
 import pytest as pytest
 from selenium.webdriver.chrome.options import Options
 
@@ -6,6 +8,8 @@ from pages.application import Application
 from selenium import webdriver
 
 from webdriver_manager.chrome import ChromeDriverManager
+
+logger = logging.getLogger("moodle")
 
 
 def pytest_addoption(parser):
@@ -37,6 +41,7 @@ def authorize(app, request):
 @pytest.fixture(scope='session')
 def app(request):
     url = request.config.getoption("--url")
+    logger.info(f"Start moodle {url}")
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     app = Application(webdriver.Chrome(ChromeDriverManager().install(),

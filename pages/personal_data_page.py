@@ -1,9 +1,13 @@
+import logging
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
 from locators.personal_data_page_locators import PersonalDataPageLocators
+
+logger = logging.getLogger("moodle")
 
 
 class PersonalDataPage(BasePage):
@@ -92,6 +96,10 @@ class PersonalDataPage(BasePage):
         country="RU",
         text="Обо мне",
     ):
+        logger.info(f'Editing personal data: "{name}", "{lastname}", '
+                    f'"{email}", "{email_display_value}", "{moodle_net_profile}",'
+                    f'"{city}", "{country}", "{timezone}",'
+                    f' "{text}"')
         self.input_name(name)
         self.input_lastname(lastname)
         self.input_email(email)
