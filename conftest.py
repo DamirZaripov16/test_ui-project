@@ -43,7 +43,7 @@ def app(request):
     url = request.config.getoption("--url")
     logger.info(f"Start moodle {url}")
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     app = Application(webdriver.Chrome(ChromeDriverManager().install(),
                                        options=chrome_options), url,)
     yield app
