@@ -18,7 +18,7 @@ class Application:
         self.driver.get(self.url)
 
     def open_authentication_page(self):
-        logger.info(f'Opening authentication page')
+        logger.info(f'Opening "{self.url}/login/index.php" - authentication page')
         self.driver.get(self.url + "/login/index.php")
 
     def quit(self):
