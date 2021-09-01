@@ -20,7 +20,7 @@ class TestSignUp:
         10. Search "Необходимо подтвердить учетную запись" text
         10.1 Check
         """
-
+        app.authentication_page.log_out()
         app.open_authentication_page()
         app.authentication_page.go_to_sign_up_page()
         data = SignUpData().random()
