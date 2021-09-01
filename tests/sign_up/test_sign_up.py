@@ -8,7 +8,8 @@ class TestSignUp:
         Steps
         1. Open Authentication page
         2. Click the "Создать учетную запись" button
-        3. Fill in the required fields: Login, Password, Email (with mask test@test.te), Email one more time,
+        3. Fill in the required fields: Login, Password,
+        Email (with mask test@test.te), Email one more time,
         Firstname, Second name
         6. Click the "Создать мой новый аккаунт" button
         7. Search "Отправить вам письмо не удалось!" text
