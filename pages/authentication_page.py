@@ -13,7 +13,6 @@ logger = logging.getLogger("moodle")
 
 
 class AuthenticationPage(BasePage):
-
     def is_authorized(self):
         self.find_element(AuthenticationPageLocators.FORM)
         element = self.find_elements(AuthenticationPageLocators.USER_BUTTON)

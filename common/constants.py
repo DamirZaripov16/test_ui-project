@@ -23,4 +23,3 @@ class PersonalDataConstants:
         "Europe/Moscow",
         "UTC",
     )
-

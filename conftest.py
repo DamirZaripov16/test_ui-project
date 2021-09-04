@@ -18,22 +18,25 @@ def pytest_addoption(parser):
         action="store",
         default="true",
         help="enter 'true' if you want to run the tests in headless mode,\n"
-             "enter 'false' - if not",
+        "enter 'false' - if not",
     ),
-    parser.addoption("--url",
-                     action="store",
-                     default="https://qacoursemoodle.innopolis.university",
-                     help="Innopolis University Courses site url"),
+    parser.addoption(
+        "--url",
+        action="store",
+        default="https://qacoursemoodle.innopolis.university",
+        help="Innopolis University Courses site url",
+    ),
 
-    parser.addoption("--username",
-                     action="store",
-                     default="zaripov.damir@test.ru",
-                     help="enter username"),
+    parser.addoption(
+        "--username",
+        action="store",
+        default="zaripov.damir@test.ru",
+        help="enter username",
+    ),
 
-    parser.addoption("--password",
-                     action="store",
-                     default="Sharif1992*",
-                     help="enter the password")
+    parser.addoption(
+        "--password", action="store", default="Sharif1992*", help="enter the password"
+    )
 
 
 @pytest.fixture
@@ -48,7 +51,7 @@ def authorize(app, request):
     app.authentication_page.sign_out()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def app(request):
     url = request.config.getoption("--url")
     headless_mode = request.config.getoption("--headless").lower()
@@ -59,11 +62,13 @@ def app(request):
         chrome_options.headless = True
         fixture = Application(
             webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options),
-            url,)
+            url,
+        )
     elif headless_mode == "false":
         fixture = Application(
             webdriver.Chrome(ChromeDriverManager().install()),
-            url,)
+            url,
+        )
     else:
         raise pytest.UsageError("--headless should be true or false")
     yield fixture

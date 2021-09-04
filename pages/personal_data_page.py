@@ -96,10 +96,12 @@ class PersonalDataPage(BasePage):
         country="RU",
         text="Обо мне",
     ):
-        logger.info(f'Editing personal data: "{name}", "{lastname}", '
-                    f'"{email}", "{email_display_value}", "{moodle_net_profile}",'
-                    f'"{city}", "{country}", "{timezone}",'
-                    f' "{text}"')
+        logger.info(
+            f'Editing personal data: "{name}", "{lastname}", '
+            f'"{email}", "{email_display_value}", "{moodle_net_profile}",'
+            f'"{city}", "{country}", "{timezone}",'
+            f' "{text}"'
+        )
         self.input_name(name)
         self.input_lastname(lastname)
         self.input_email(email)

@@ -5,7 +5,6 @@ from models.authenticate import AuthenticationData
 
 
 class TestAuthenticationPage:
-
     def test_authentication_valid_data(self, app, authorize):
         """
         Steps:
@@ -15,8 +14,10 @@ class TestAuthenticationPage:
         """
         assert app.authentication_page.is_authorized(), "We are not logged in!"
         app.authentication_page.log_out()
-        assert (AuthenticationConstants.LOGOUT_MESSAGE
-                == app.authentication_page.log_out_check()), "We are still in!"
+        assert (
+            AuthenticationConstants.LOGOUT_MESSAGE
+            == app.authentication_page.log_out_check()
+        ), "We are still in!"
 
     def test_authentication_invalid_data(self, app):
         """
@@ -28,9 +29,10 @@ class TestAuthenticationPage:
         app.open_authentication_page()
         data = AuthenticationData.random()
         app.authentication_page.authorize(data)
-        assert AuthenticationConstants.AUTHENTICATION_ERROR \
-               == app.authentication_page.authentication_login_error(), \
-               "We are logged in!"
+        assert (
+            AuthenticationConstants.AUTHENTICATION_ERROR
+            == app.authentication_page.authentication_login_error()
+        ), "We are logged in!"
 
     @pytest.mark.parametrize("field", ["username", "password"])
     def test_authentication_empty_data(self, app, field):
@@ -44,6 +46,7 @@ class TestAuthenticationPage:
         data = AuthenticationData.random()
         setattr(data, field, None)
         app.authentication_page.authorize(data)
-        assert AuthenticationConstants.AUTHENTICATION_ERROR \
-               == app.authentication_page.authentication_login_error(), \
-               "We are logged in!"
+        assert (
+            AuthenticationConstants.AUTHENTICATION_ERROR
+            == app.authentication_page.authentication_login_error()
+        ), "We are logged in!"

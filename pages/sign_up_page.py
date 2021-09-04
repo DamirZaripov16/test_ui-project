@@ -45,9 +45,11 @@ class SignUpPage(BasePage):
         return self.find_element(SignUpLocators.SEND_EMAIL_ANEW_BUTTON)
 
     def sign_up(self, data):
-        logger.info(f'Signing in: "{data.login}", "{data.password}", '
-                    f'"{data.email}", "{data.email}", "{data.first_name}",'
-                    f'"{data.last_name}"')
+        logger.info(
+            f'Signing in: "{data.login}", "{data.password}", '
+            f'"{data.email}", "{data.email}", "{data.first_name}",'
+            f'"{data.last_name}"'
+        )
         self.fill_element(self.login_id_input(), data.login)
         self.fill_element(self.password_id_input(), data.password)
         self.fill_element(self.email_id_input(), data.email)

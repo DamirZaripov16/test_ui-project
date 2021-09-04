@@ -33,7 +33,9 @@ class TestSignUp:
         app.authentication_page.authorize(authenticate_data)
         assert app.sign_up_page.check_new_account_log_in(), "We are not logged in!"
 
-    @pytest.mark.parametrize("field", ["login", "password", "email", "first_name", "last_name"])
+    @pytest.mark.parametrize(
+        "field", ["login", "password", "email", "first_name", "last_name"]
+    )
     def test_invalid_sign_up_data(self, app, field):
         """
         Steps
@@ -51,5 +53,6 @@ class TestSignUp:
         data = SignUpData().random()
         setattr(data, field, None)
         app.sign_up_page.sign_up(data)
-        assert not app.sign_up_page.is_signed_up(), \
-            "We are sign up with empty required fields!"
+        assert (
+            not app.sign_up_page.is_signed_up()
+        ), "We are sign up with empty required fields!"
