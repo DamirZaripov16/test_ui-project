@@ -1,3 +1,5 @@
+import pytest
+
 from models.authenticate import AuthenticationData
 from models.sign_up import SignUpData
 
@@ -20,7 +22,6 @@ class TestSignUp:
         10. Search "Необходимо подтвердить учетную запись" text
         10.1 Check
         """
-        app.authentication_page.log_out()
         app.open_authentication_page()
         app.authentication_page.go_to_sign_up_page()
         data = SignUpData().random()
@@ -31,3 +32,23 @@ class TestSignUp:
         authenticate_data = AuthenticationData(data.login, data.password)
         app.authentication_page.authorize(authenticate_data)
         assert app.sign_up_page.check_new_account_log_in(), "We are not logged in!"
+
+    @pytest.mark.parametrize("field", ["login", "password", "email", "first_name", "last_name"])
+    def test_invalid_sign_up_data(self, app, field):
+        """
+        Steps
+        1. Open Login page
+        2. Click the "Создать учетную запись" button
+        3. Fill in the required fields: Login, Password, Email (with mask test@test.te), Email Again,
+        First_name, Second_name, Each field separately
+        4. Click the "Создать мой новый аккаунт" button
+        5. Checking for registration of a new user without empty required fields
+        """
+
+        app.open_authentication_page()
+        app.authentication_page.go_to_sign_up_page()
+        data = SignUpData().random()
+        setattr(data, field, None)
+        app.sign_up_page.sign_up(data)
+        assert not app.sign_up_page.is_signed_up(), \
+            "We are sign up with empty required fields!"

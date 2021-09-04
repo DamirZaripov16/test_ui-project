@@ -13,6 +13,13 @@ logger = logging.getLogger("moodle")
 
 
 def pytest_addoption(parser):
+    parser.addoption(
+        "--headless",
+        action="store",
+        default="true",
+        help="enter 'true' if you want to run the tests in headless mode,\n"
+             "enter 'false' - if not",
+    ),
     parser.addoption("--url",
                      action="store",
                      default="https://qacoursemoodle.innopolis.university",
@@ -36,15 +43,28 @@ def authorize(app, request):
     app.open_authentication_page()
     data = AuthenticationData(username=user, password=password)
     app.authentication_page.authorize(data)
+    assert app.authentication_page.is_authorized(), "You are not in!"
+    yield
+    app.authentication_page.sign_out()
 
 
 @pytest.fixture(scope='session')
 def app(request):
     url = request.config.getoption("--url")
+    headless_mode = request.config.getoption("--headless").lower()
+    logger.info(f"Start moodle {url} with headless={headless_mode} mode")
     logger.info(f"Start moodle {url}")
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    app = Application(webdriver.Chrome(ChromeDriverManager().install(),
-                                       options=chrome_options), url,)
-    yield app
-    app.quit()
+    if headless_mode == "true":
+        chrome_options = Options()
+        chrome_options.headless = True
+        fixture = Application(
+            webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options),
+            url,)
+    elif headless_mode == "false":
+        fixture = Application(
+            webdriver.Chrome(ChromeDriverManager().install()),
+            url,)
+    else:
+        raise pytest.UsageError("--headless should be true or false")
+    yield fixture
+    fixture.quit()

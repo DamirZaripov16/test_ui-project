@@ -31,3 +31,9 @@ class BasePage:
 
     def click_element(self, element):
         element.click()
+
+    def make_screenshot(self):
+        return self.app.driver.get_screenshot_as_png()
+
+    def get_page_url(self):
+        return self.app.driver.current_url

@@ -84,3 +84,10 @@ class AuthenticationPage(BasePage):
 
     def go_to_sign_up_page(self):
         self.click_element(self.sign_up_button())
+
+    def sign_out(self):
+        if self.is_authorized():
+            self.click_element(self.user_menu())
+            self.click_element(self.exit())
+        if self.confirm_exit_window():
+            self.click_element(self.confirm_exit())
