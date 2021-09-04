@@ -39,8 +39,9 @@ class TestSignUp:
         Steps
         1. Open Login page
         2. Click the "Создать учетную запись" button
-        3. Fill in the required fields: Login, Password, Email (with mask test@test.te), Email Again,
-        First_name, Second_name, Each field separately
+        3. Fill in the required fields: Login, Password,
+        Email (with mask test@test.te), Email one more time,
+        Firstname, Second name
         4. Click the "Создать мой новый аккаунт" button
         5. Checking for registration of a new user without empty required fields
         """
