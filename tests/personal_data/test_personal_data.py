@@ -59,6 +59,30 @@ class TestPersonalData:
             not app.personal_data.is_changed()
         ), "Personal data should not be changed!"
 
+    @pytest.mark.parametrize("email", ["zaripov.damirtest.ru", "@mail.ru", "777"])
+    def test_edit_basic_personal_data_with_incorrect_email(self, app, authorize, email):
+        """
+        Steps
+        1. Open main page
+        2. Authenticate with valid data
+        3. Check authenticate result
+        4. Go to page with editing personal data
+        5. Edit basic personal data with incorrect email
+        6. Check editing is not successful
+        """
+        app.authentication_page.go_to_editing_personal_data()
+        personal_data = PD.random()
+        setattr(personal_data, "email", email)
+        app.personal_data.edit_personal_data(personal_data)
+        allure.attach(
+            app.personal_data.make_screenshot(),
+            name="Unsuccessful_changing_screenshot",
+            attachment_type=AttachmentType.PNG,
+        )
+        assert (
+            not app.personal_data.is_changed()
+        ), "Personal data should not be changed!"
+
     @pytest.mark.parametrize(
         "name, last_name",
         [
