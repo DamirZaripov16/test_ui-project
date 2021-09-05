@@ -73,3 +73,13 @@ def app(request):
         raise pytest.UsageError("--headless should be true or false")
     yield fixture
     fixture.quit()
+
+
+# def app(request):
+#     url = request.config.getoption("--url")
+#     chrome_options = Options()
+#     chrome_options.add_argument("--headless")
+#     app = Application
+#     (webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options), url,)
+#     yield app
+#     app.quit()

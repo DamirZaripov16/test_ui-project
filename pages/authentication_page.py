@@ -28,13 +28,13 @@ class AuthenticationPage(BasePage):
         return False
 
     def username_input(self) -> WebElement:
-        return self.find_element(AuthenticationPageLocators.USERNAME)
+        return self.find_element(AuthenticationPageLocators.LOGIN)
 
     def password_input(self) -> WebElement:
         return self.find_element(AuthenticationPageLocators.PASSWORD)
 
     def submit_button(self) -> WebElement:
-        return self.find_element(AuthenticationPageLocators.LOGIN_SUBMIT)
+        return self.find_element(AuthenticationPageLocators.SUBMIT)
 
     def user_menu(self) -> WebElement:
         return self.find_element(AuthenticationPageLocators.USER_MENU)
@@ -61,12 +61,6 @@ class AuthenticationPage(BasePage):
             self.click_element(self.user_menu())
             self.click_element(self.exit())
 
-    def log_out_check(self):
-        return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK).text
-
-    def log_out_check_confirm(self):
-        return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK_CONFIRM)
-
     def user_menu_settings(self) -> WebElement:
         return self.find_element(AuthenticationPageLocators.USER_MENU_SETTINGS)
 
@@ -78,9 +72,6 @@ class AuthenticationPage(BasePage):
     def authentication_login_error(self) -> str:
         return self.find_element(AuthenticationPageLocators.LOGIN_ERROR).text
 
-    def sign_up_button(self) -> WebElement:
-        return self.find_element(AuthenticationPageLocators.SIGN_UP_BUTTON)
-
     def go_to_sign_up_page(self):
         self.click_element(self.sign_up_button())
 
@@ -90,3 +81,12 @@ class AuthenticationPage(BasePage):
             self.click_element(self.exit())
         if self.confirm_exit_window():
             self.click_element(self.confirm_exit())
+
+    def sign_up_button(self) -> WebElement:
+        return self.find_element(AuthenticationPageLocators.SIGN_UP_BUTTON)
+
+    # def log_out_check(self):
+    #     return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK).text
+    #
+    # def log_out_check_confirm(self):
+    #     return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK_CONFIRM)

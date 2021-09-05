@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class PersonalDataPageLocators:
-
     EDIT_INFO = (By.CSS_SELECTOR, "a[href*='editadvanced']")
     BASIC_DATA = (By.ID, "id_moodle")
     NAME_INPUT = (By.ID, "id_firstname")
@@ -17,4 +16,8 @@ class PersonalDataPageLocators:
     COUNTRY_SELECT = (By.ID, "id_country")
     TIMEZONE_SELECT = (By.ID, "id_timezone")
     EMAIL_DISPLAY = (By.ID, "id_maildisplay")
-    SUCCESSFULLY_CHANGED = (By.CLASS_NAME, "alert")
+    USER_IMAGE_DESCRIPTION = (By.ID, "id_imagealt")
+    USER_IMAGE_FILE_ADD_BUTTON = (By.CLASS_NAME, "fp-btn-add")
+    USER_IMAGE_FILE_CHOOSE_INPUT = (By.CSS_SELECTOR, "input[type='file']")
+    DOWNLOAD_FILE_BUTTON = (By.CLASS_NAME, "fp-upload-btn")
+    USER_PROFILE_DEFAULT_PICTURE = (By.CLASS_NAME, "defaultuserpic")

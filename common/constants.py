@@ -1,6 +1,5 @@
 class AuthenticationConstants:
     AUTHENTICATION_ERROR = "Неверный логин или пароль, попробуйте заново."
-    LOGOUT_MESSAGE = "Забыли логин или пароль?"
 
 
 class SignUpConstants:
@@ -8,7 +7,7 @@ class SignUpConstants:
 
 
 class PersonalDataConstants:
-    SUCCESSFULLY_CHANGED_MESSAGE = "×\nИзменения сохранены"
+
     EMAIL_DISPLAY_MODES = {
         "hidden": "0",
         "all_can_see": "1",
