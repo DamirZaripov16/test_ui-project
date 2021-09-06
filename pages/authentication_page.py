@@ -84,9 +84,3 @@ class AuthenticationPage(BasePage):
 
     def sign_up_button(self) -> WebElement:
         return self.find_element(AuthenticationPageLocators.SIGN_UP_BUTTON)
-
-    # def log_out_check(self):
-    #     return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK).text
-    #
-    # def log_out_check_confirm(self):
-    #     return self.find_element(AuthenticationPageLocators.LOG_OUT_CHECK_CONFIRM)

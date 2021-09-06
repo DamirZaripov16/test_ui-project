@@ -23,6 +23,17 @@ class PersonalData:
         url=None,
         image_url=None,
         user_image_description=None,
+        name_phonetic=None,
+        lastnamephonetic=None,
+        middlename=None,
+        alternatename=None,
+        individualnumber=None,
+        institution=None,
+        department=None,
+        phone1=None,
+        phone2=None,
+        address=None,
+        tag=None,
     ):
         self.name = name
         self.last_name = last_name
@@ -36,6 +47,17 @@ class PersonalData:
         self.url = url
         self.image_url = image_url
         self.user_image_description = user_image_description
+        self.name_phonetic = name_phonetic
+        self.lastname_phonetic = lastnamephonetic
+        self.middlename = middlename
+        self.alternatename = alternatename
+        self.individualnumber = individualnumber
+        self.institution = institution
+        self.department = department
+        self.phone1 = phone1
+        self.phone2 = phone2
+        self.address = address
+        self.tag = tag
 
     @staticmethod
     def random():
@@ -53,6 +75,17 @@ class PersonalData:
         url = fake.url()
         image_url = fake.image_url()
         user_image_description = fake.text(max_nb_chars=20)
+        name_phonetic = name
+        lastnamephonetic = last_name
+        middlename = fake.middle_name()
+        alternatename = fake.first_name()
+        individualnumber = fake.word()
+        institution = fake.company()
+        department = fake.job()
+        phone1 = fake.phone_number()
+        phone2 = fake.phone_number()
+        address = fake.address()
+        tag = fake.word()
         return PersonalData(
             name,
             last_name,
@@ -66,4 +99,15 @@ class PersonalData:
             url,
             image_url,
             user_image_description,
+            name_phonetic,
+            lastnamephonetic,
+            middlename,
+            alternatename,
+            individualnumber,
+            institution,
+            department,
+            phone1,
+            phone2,
+            address,
+            tag,
         )

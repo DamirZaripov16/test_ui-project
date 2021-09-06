@@ -1,27 +1,28 @@
 import os.path
 
-import allure
 import pytest
+import allure
 from allure_commons.types import AttachmentType
 
 from models.personal_data import PersonalData as PD
+
 
 current_dir = os.path.dirname(__file__)
 user_images_directory = os.path.join(current_dir, "user_images")
 
 
+@pytest.mark.personal_data
 class TestPersonalData:
     def test_valid_edit_basic_personal_data(self, app, authorize):
         """
         Steps
-        1. Open main page
-        2. Auth with valid data
-        3. Check auth result
+        1. Open authentication page
+        2. Authentication with valid data
+        3. Check authentication result
         4. Go to page with editing personal data
         5. Edit basic personal data with valid data
         6. Check successful editing
         """
-
         app.authentication_page.go_to_editing_personal_data()
         personal_data = PD.random()
         app.personal_data.edit_personal_data(personal_data)
@@ -30,7 +31,7 @@ class TestPersonalData:
             name="Successful_changing_screenshot",
             attachment_type=AttachmentType.PNG,
         )
-        assert app.personal_data.is_changed(), "Personal data is not changed!"
+        assert app.personal_data.is_changed(), "Personal data not changed!"
 
     @pytest.mark.parametrize("field", ["name", "last_name", "email"])
     def test_edit_basic_personal_data_without_required_field(
@@ -38,14 +39,13 @@ class TestPersonalData:
     ):
         """
         Steps
-        1. Open main page
-        2. Authenticate with valid data
-        3. Check authenticate result
+        1. Open authentication page
+        2. Authentication with valid data
+        3. Check authentication result
         4. Go to page with editing personal data
         5. Edit basic personal data with invalid data
         6. Check editing is not successful
         """
-
         app.authentication_page.go_to_editing_personal_data()
         personal_data = PD.random()
         setattr(personal_data, field, "")
@@ -59,13 +59,13 @@ class TestPersonalData:
             not app.personal_data.is_changed()
         ), "Personal data should not be changed!"
 
-    @pytest.mark.parametrize("email", ["zaripov.damirtest.ru", "@mail.ru", "777"])
+    @pytest.mark.parametrize("email", ["zaripovdamir.ru", "@mail.ru", "777"])
     def test_edit_basic_personal_data_with_incorrect_email(self, app, authorize, email):
         """
         Steps
-        1. Open main page
-        2. Authenticate with valid data
-        3. Check authenticate result
+        1. Open authentication page
+        2. Authentication with valid data
+        3. Check authentication result
         4. Go to page with editing personal data
         5. Edit basic personal data with incorrect email
         6. Check editing is not successful
@@ -99,11 +99,11 @@ class TestPersonalData:
         """
         Steps
         1. Open authentication page
-        2. Auth with valid data
-        3. Check auth result
+        2. Authentication with valid data
+        3. Check authentication result
         4. Go to page with editing personal data
         5. Edit name or(and) lastname as digits
-        6. Check editing is not successfully
+        6. Check editing is not successful
         """
         app.authentication_page.go_to_editing_personal_data()
         personal_data = PD.random()
@@ -127,24 +127,51 @@ class TestPersonalData:
             for image in os.listdir(user_images_directory)
         ],
     )
-    def test_set_user_image(self, app, authorize, image_file):
+    def test_valid_edit_more_personal_data(self, app, authorize, image_file):
         """
         Steps
-        1. Open main page
-        2. Authenticate with valid data
-        3. Check authenticate result
+        1. Open authentication page
+        2. Authentication with valid data
+        3. Check authentication result
         4. Go to page with editing personal data
+        5. Edit additional personal data with valid data
         5. Edit user image
         6. Check successful editing
         """
         app.authentication_page.go_to_editing_personal_data()
         personal_data = PD.random()
-        app.personal_data.set_user_image(
-            image_file, personal_data.user_image_description
-        )
-        allure.attach(
-            app.personal_data.make_screenshot(),
-            name="Successful_changing_screenshot",
-            attachment_type=AttachmentType.PNG,
-        )
-        assert app.personal_data.is_user_image_changed(), "User image not changed!"
+        app.personal_data_more.edit_personal_data_more(personal_data)
+        assert app.personal_data_more.is_changed(), "Personal data not changed!"
+
+    def test_valid_edit_optional_personal_data(self, app, authorize):
+        """
+        Steps
+        1. Open authentication page
+        2. Authentication with valid data
+        3. Check authentication result
+        4. Go to page with editing personal data
+        5. Edit optional personal data with valid data
+        6. Check successfully editing
+        """
+        app.open_main_page()
+        app.authentication_page.go_to_editing_personal_data()
+        personal_data = PD.random()
+        app.personal_data_optional.edit_personal_data_optional(personal_data)
+        assert app.personal_data_optional.is_changed(), "Personal data not changed!"
+
+    def test_valid_edit_tag_personal_data(self, app, authorize):
+        """
+        Steps
+        1. Open authentication page
+        2. Authentication with valid data
+        3. Check authentication result
+        4. Go to page with editing personal data
+        5. Add tag with valid data
+        6. Check successfully editing
+        """
+        app.open_main_page()
+        app.authentication_page.go_to_editing_personal_data()
+        personal_data = PD.random()
+        app.personal_data_tag.edit_personal_data_tag(personal_data)
+        assert app.personal_data_tag.is_changed(), "Personal data is not changed!"
+        app.authentication_page.sign_out()
