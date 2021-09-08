@@ -2,11 +2,13 @@ import logging
 
 from selenium.webdriver.remote.webelement import WebElement
 
+from locators.account_page_locators import AccountPageLocators
 from locators.base_page_locators import BasePageLocators
 from models.authenticate import AuthenticationData
 from pages.base_page import BasePage
 from locators.authentication_page_locators import AuthenticationPageLocators
 from locators.personal_data_page_locators import PersonalDataPageLocators
+from locators.course_page_locators import CoursePageLocators
 
 
 logger = logging.getLogger("moodle")
@@ -84,3 +86,20 @@ class AuthenticationPage(BasePage):
 
     def sign_up_button(self) -> WebElement:
         return self.find_element(AuthenticationPageLocators.SIGN_UP_BUTTON)
+
+    def user_menu_account(self):
+        return self.find_element(AccountPageLocators.USER_MENU_ACCOUNT)
+
+    def go_to_administration_page(self):
+        self.click_element(self.user_menu())
+        self.click_element(self.user_menu_account())
+        self.click_element(self.find_element(AccountPageLocators.ADMINISTRATION_BUTTON))
+
+    def administration_page(self):
+        return self.find_element(AccountPageLocators.ADMINISTRATION_HEADER).text
+
+    def go_to_course_page(self):
+        self.click_element(self.find_element(CoursePageLocators.COURSES_HEADER))
+
+    def go_to_create_course_page(self):
+        self.click_element(self.find_element(CoursePageLocators.CREATE_COURSE_LINK))

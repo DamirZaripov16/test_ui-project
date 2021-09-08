@@ -1,8 +1,6 @@
 import os.path
 
 import pytest
-import allure
-from allure_commons.types import AttachmentType
 
 from models.personal_data import PersonalData as PD
 
@@ -26,11 +24,6 @@ class TestPersonalData:
         app.authentication_page.go_to_editing_personal_data()
         personal_data = PD.random()
         app.personal_data.edit_personal_data(personal_data)
-        allure.attach(
-            app.personal_data.make_screenshot(),
-            name="Successful_changing_screenshot",
-            attachment_type=AttachmentType.PNG,
-        )
         assert app.personal_data.is_changed(), "Personal data not changed!"
 
     @pytest.mark.parametrize("field", ["name", "last_name", "email"])
@@ -50,11 +43,6 @@ class TestPersonalData:
         personal_data = PD.random()
         setattr(personal_data, field, "")
         app.personal_data.edit_personal_data(personal_data)
-        allure.attach(
-            app.personal_data.make_screenshot(),
-            name="Unsuccessful_changing_screenshot",
-            attachment_type=AttachmentType.PNG,
-        )
         assert (
             not app.personal_data.is_changed()
         ), "Personal data should not be changed!"
@@ -74,11 +62,6 @@ class TestPersonalData:
         personal_data = PD.random()
         setattr(personal_data, "email", email)
         app.personal_data.edit_personal_data(personal_data)
-        allure.attach(
-            app.personal_data.make_screenshot(),
-            name="Unsuccessful_changing_screenshot",
-            attachment_type=AttachmentType.PNG,
-        )
         assert (
             not app.personal_data.is_changed()
         ), "Personal data should not be changed!"
@@ -110,11 +93,6 @@ class TestPersonalData:
         setattr(personal_data, "name", name)
         setattr(personal_data, "last_name", last_name)
         app.personal_data.edit_personal_data(personal_data)
-        allure.attach(
-            app.personal_data.make_screenshot(),
-            name="Unsuccessful_changing_screenshot",
-            attachment_type=AttachmentType.PNG,
-        )
         assert (
             not app.personal_data.is_changed()
         ), "Personal data should not be changed!"
@@ -127,11 +105,11 @@ class TestPersonalData:
             for image in os.listdir(user_images_directory)
         ],
     )
-    def test_valid_edit_more_personal_data(self, app, authorize, image_file):
+    def test_set_user_image(self, app, authorize, image_file):
         """
         Steps
         1. Open authentication page
-        2. Authentication with valid data
+        2. Authenticate with valid data
         3. Check authentication result
         4. Go to page with editing personal data
         5. Edit additional personal data with valid data
@@ -140,38 +118,54 @@ class TestPersonalData:
         """
         app.authentication_page.go_to_editing_personal_data()
         personal_data = PD.random()
+        app.personal_data.set_user_image(
+            image_file, personal_data.user_image_description
+        )
+        assert app.personal_data.is_user_image_changed(), "User image is not changed!"
+
+    def test_valid_edit_more_personal_data(self, app, authorize):
+        """
+        Steps
+        1. Open auth page
+        2. Authenticate with valid data
+        3. Check authentication result
+        4. Go to page with editing personal data
+        5. Edit additional personal data with valid data
+        6. Check successful editing
+        """
+        app.authentication_page.go_to_editing_personal_data()
+        personal_data = PD.random()
         app.personal_data_more.edit_personal_data_more(personal_data)
-        assert app.personal_data_more.is_changed(), "Personal data not changed!"
+        assert app.personal_data_more.is_changed(), "Personal data is not changed!"
 
     def test_valid_edit_optional_personal_data(self, app, authorize):
         """
         Steps
-        1. Open authentication page
-        2. Authentication with valid data
+        1. Open auth page
+        2. Authenticate with valid data
         3. Check authentication result
         4. Go to page with editing personal data
         5. Edit optional personal data with valid data
-        6. Check successfully editing
+        6. Check successful editing
         """
         app.open_main_page()
         app.authentication_page.go_to_editing_personal_data()
         personal_data = PD.random()
         app.personal_data_optional.edit_personal_data_optional(personal_data)
-        assert app.personal_data_optional.is_changed(), "Personal data not changed!"
+        assert app.personal_data_optional.is_changed(), "Personal data is not changed!"
 
     def test_valid_edit_tag_personal_data(self, app, authorize):
         """
         Steps
-        1. Open authentication page
-        2. Authentication with valid data
+        1. Open auth page
+        2. Authenticate with valid data
         3. Check authentication result
         4. Go to page with editing personal data
         5. Add tag with valid data
-        6. Check successfully editing
+        6. Check successful editing
         """
         app.open_main_page()
         app.authentication_page.go_to_editing_personal_data()
         personal_data = PD.random()
         app.personal_data_tag.edit_personal_data_tag(personal_data)
         assert app.personal_data_tag.is_changed(), "Personal data is not changed!"
-        app.authentication_page.sign_out()

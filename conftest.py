@@ -1,5 +1,6 @@
 import logging
 
+import allure
 import pytest as pytest
 from selenium.webdriver.chrome.options import Options
 
@@ -73,3 +74,24 @@ def app(request):
         raise pytest.UsageError("--headless should be true or false")
     yield fixture
     fixture.quit()
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item):
+    outcome = yield
+    rep = outcome.get_result()
+    if rep.when == "call" and rep.failed:
+        try:
+            if "app" in item.fixturenames:
+                web_driver = item.funcargs["app"]
+            else:
+                logger.error("Fail to take screen-shot")
+                return
+            logger.info("Screen-shot done")
+            allure.attach(
+                web_driver.driver.get_screenshot_as_png(),
+                name="screenshot",
+                attachment_type=allure.attachment_type.PNG,
+            )
+        except Exception as e:
+            logger.error("Fail to take screen-shot: {}".format(e))

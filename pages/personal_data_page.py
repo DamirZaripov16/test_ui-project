@@ -1,3 +1,5 @@
+import logging
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
@@ -9,6 +11,9 @@ from locators.personal_data_page_locators import (
     PersonalDataPageTagLocators,
     PersonalDataPageOptionalLocators,
 )
+
+
+logger = logging.getLogger("moodle")
 
 
 class PersonalDataPage(BasePage):
@@ -51,22 +56,27 @@ class PersonalDataPage(BasePage):
 
     def user_image_file_add_button(self) -> WebElement:
         return self.find_clickable_element(
-            PersonalDataPageTagLocators.USER_IMAGE_FILE_ADD_BUTTON
+            PersonalDataPageLocators.USER_IMAGE_FILE_ADD_BUTTON
+        )
+
+    def download_file_section(self) -> WebElement:
+        return self.find_clickable_element(
+            PersonalDataPageLocators.DOWNLOAD_FILE_SECTION
         )
 
     def user_image_file_choose_input(self) -> WebElement:
         return self.find_clickable_element(
-            PersonalDataPageTagLocators.USER_IMAGE_FILE_CHOOSE_INPUT
+            PersonalDataPageLocators.USER_IMAGE_FILE_CHOOSE_INPUT
         )
 
     def download_file_button(self) -> WebElement:
         return self.find_clickable_element(
-            PersonalDataPageTagLocators.DOWNLOAD_FILE_BUTTON
+            PersonalDataPageLocators.DOWNLOAD_FILE_BUTTON
         )
 
     def user_image_description_input(self) -> WebElement:
         return self.find_clickable_element(
-            PersonalDataPageTagLocators.USER_IMAGE_DESCRIPTION
+            PersonalDataPageLocators.USER_IMAGE_DESCRIPTION
         )
 
     def submit_button(self) -> WebElement:
@@ -101,6 +111,7 @@ class PersonalDataPage(BasePage):
 
     def choose_user_image_file(self, image_file):
         self.click_element(self.user_image_file_add_button())
+        self.click_element(self.download_file_section())
         self.fill_element(self.user_image_file_choose_input(), image_file)
         self.click_element(self.download_file_button())
 
@@ -111,6 +122,17 @@ class PersonalDataPage(BasePage):
         self.click_element(self.submit_button())
 
     def edit_personal_data(self, data):
+        logger.info(
+            f"Editing basic personal data with next values:\n"
+            f"name: {data.name}\n"
+            f"lastname: {data.last_name}\n"
+            f"email: {data.email}\n"
+            f"moodle_net_profile: {data.moodle_net_profile}\n"
+            f"city: {data.city}\n"
+            f"country_code: {data.country_code}\n"
+            f"timezone: {data.timezone}\n"
+            f"about: {data.about}\n"
+        )
         self.input_name(data.name)
         self.input_lastname(data.last_name)
         self.input_email(data.email)
@@ -120,6 +142,7 @@ class PersonalDataPage(BasePage):
         self.select_country(data.country_code)
         self.select_timezone(data.timezone)
         self.input_about(data.about)
+        logger.info("Submitting changes.\n")
         self.submit_changes()
 
     def is_changed(self, wait_time=10):
@@ -140,7 +163,7 @@ class PersonalDataPage(BasePage):
 
     def is_user_image_changed(self):
         if self.is_changed() and not self.find_elements(
-            PersonalDataPageTagLocators.USER_PROFILE_DEFAULT_PICTURE
+            PersonalDataPageLocators.USER_PROFILE_DEFAULT_PICTURE
         ):
             return True
         else:
