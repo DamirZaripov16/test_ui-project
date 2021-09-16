@@ -7,7 +7,7 @@
    ```git clone https://github.com/DamirZaripov16/test_ui-project```
 3. Open the project
 4. Install all the requirements within **requirements.txt** <br>
-pip install -r /path/to/requirements.txt
+   ```pip install -r /path/to/requirements.txt```
 ## About
 ***
 ### Authorization form check
