@@ -8,34 +8,57 @@
 3. Open the project
 4. Install all the requirements within **requirements.txt** <br>
 pip install -r /path/to/requirements.txt
-## About
+## Instruments
 ***
-### Authorization form check
-Positive tests:
+### _**Pytest**_
+* The Easiest and yet the best test-writing tool in Python
+* Multiple tests execution in parallel to reduce general execution time
+* Unique way to detect tests in your project without additional imports etc.<br>
+### _**Selenium**_
+* Supports various commonly used Browsers
+* Supports parallel test execution which perfectly combines with _**Pytest**_
+### _**Logger**_
+* Helps to track what exactly happening during test execution with minimum effort
+* Easy to implement
+### _**Allure reports (see "Allure reports" section for more)**_
+* Detailed tests execution reports
+* User-friendly dashboard to help to keep in touch with tests state<br>
+## Checks
+***
+### **_Authorization form check_**
+**Positive tests:**
 * Authorization with valid login and valid password<br>
-Negative tests:
+
+**Negative tests:**
 * Empty login
-* Empty password<br>
-__Initial file__: tests/auth/test_auth.py
-### Course creation check
-Positive tests:
+* Empty password<br><br>
+
+**Initial file and detailed docstring-test cases**: tests/auth/test_auth.py
+### _**Course creation check**_
+**Positive tests:**
 * Course creation/deletion<br>
-Negative tests:
+
+**Negative tests:**
 * Unavailable course creation without fullname of the course
-* Unavailable course creation without shortname of the course<br>
-__Initial file__: tests/auth/test_auth.py
+* Unavailable course creation without shortname of the course<br><br>
+
+**Initial file and detailed docstring-test cases**: tests/auth/test_auth.py
 ### Personal data update check
-Positive tests:
-* Filling all the fields with valid data
-Required fields negative tests:
-* Required fields consequent filling with invalid data<br>
-__Initial file__: \tests\personal_data\test_personal_data.py
+**Positive tests:**
+* Filling all the fields with valid data<br>
+
+**Required fields negative tests:**
+* Required fields consequent filling with invalid data<br><br>
+
+**Initial file and detailed docstring-test cases**: \tests\personal_data\test_personal_data.py
 ### Signing up check
-Positive tests:
-* Filling all the fields with valid data and eventual registration of a new user
-Required fields negative tests:
+**Positive tests:**
+* Filling all the fields with valid data and eventual registration of a new user<br>
+
+**Required fields negative tests:**
 * Required fields consequent filling with invalid data and unavailable registration of a new user<br>
-* __Initial file__: tests/sign_up/test_sign_up.py
+
+**Initial file and detailed docstring-test cases**: tests/sign_up/test_sign_up.py
 ##  Allure reports
 ***
 1) Install _**Allure commandline application**_ on your OS
