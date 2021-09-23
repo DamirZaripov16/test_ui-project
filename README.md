@@ -20,7 +20,7 @@ pip install -r /path/to/requirements.txt
 ### _**Logger**_
 * Helps to track what exactly happening during test execution with minimum effort
 * Easy to implement
-### _**Allure reports (see "Allure reports" section for more)**_
+### _**Allure reports (see ["Allure reports"](https://github.com/DamirZaripov16/test_ui-project#allure-reports) section for more)**_
 * Detailed tests execution reports
 * User-friendly dashboard to help to keep in touch with tests state<br>
 ## Checks
