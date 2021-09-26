@@ -1,5 +1,16 @@
 [![Build Status](https://app.travis-ci.com/DamirZaripov16/test_ui-project.svg?branch=master)](https://app.travis-ci.com/DamirZaripov16/test_ui-project)
 # Autotests for ["Qamoodle"](https://qacoursemoodle.innopolis.university) app
+## Navigation
+***
+####1. About
+####2. Installation
+####3. Instruments
+####4. Checks
+####5. Allure reports
+## About
+***
+In this project the autotests check main "Qamoodle" course-making site functionality.<br>
+I have chosen _Page Object model_ as a code design pattern to ensure further comfort editing and extension.
 ## Installation
 ***
 1. Define a directory on a local machine
@@ -20,9 +31,13 @@ pip install -r /path/to/requirements.txt
 ### _**Logger**_
 * Helps to track what exactly happening during test execution with minimum effort
 * Easy to implement
+### _**TravisCI**_
+* "The final gate" to ensure the success of your recent build<br>
+* Automated integration possibility with your linters, validators etc.<br>
 ### _**Allure reports (see ["Allure reports"](https://github.com/DamirZaripov16/test_ui-project#allure-reports) section for more)**_
 * Detailed tests execution reports
 * User-friendly dashboard to help to keep in touch with tests state<br>
+* Gives a negative feedback by creating a screenshot<br>
 ## Checks
 ***
 ### **_Authorization form check_**
