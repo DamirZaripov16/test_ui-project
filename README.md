@@ -3,10 +3,10 @@
 ## Navigation
 ***
 1. [About](#about)<br>
-2. Installation<br>
-3. Instruments<br>
-4. Checks<br>
-5. Allure reports
+2. [Installation](#installation)<br>
+3. [Instruments](#instruments)<br>
+4. [Checks](#checks)<br>
+5. [Allure reports](#allure-reports)
 ## About
 ***
 In this project the autotests check main "Qamoodle" course-making site functionality.<br>
