@@ -2,11 +2,11 @@
 # Autotests for ["Qamoodle"](https://qacoursemoodle.innopolis.university) app
 ## Navigation
 ***
-####1. About<br>
-####2. Installation<br>
-####3. Instruments<br>
-####4. Checks<br>
-####5. Allure reports
+1. [About](#about)<br>
+2. Installation<br>
+3. Instruments<br>
+4. Checks<br>
+5. Allure reports
 ## About
 ***
 In this project the autotests check main "Qamoodle" course-making site functionality.<br>
