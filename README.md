@@ -70,6 +70,6 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
    <br>```scoop install allure```<br>
    2) Download _**Allure commandline application**_ manually if you don't have **_scoop_** installed<br>
    3) Java is required no matter which installation way you choose<br>
-**Linux and MacOS users** watch [this](https://docs.qameta.io/allure/#_installing_a_commandline).
+**Linux and MacOS users** check [this](https://docs.qameta.io/allure/#_installing_a_commandline).
 2) Run ```pytest --alluredir=allure_reports``` on your IDE for tests completion data generation
 3) After tests are completed run ```allure serve allure_reports``` to see tests completion dashboard
