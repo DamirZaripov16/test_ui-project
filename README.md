@@ -1,24 +1,24 @@
 [![Build Status](https://app.travis-ci.com/DamirZaripov16/test_ui-project.svg?branch=master)](https://app.travis-ci.com/DamirZaripov16/test_ui-project)
-# Autotests for ["Qamoodle"](https://qacoursemoodle.innopolis.university) app
+# ["Qamoodle"](https://qacoursemoodle.innopolis.university) autotests️
 ***
-## Navigation
+## 🧭 Navigation
 
 1. [About](#about)<br>
 2. [Installation](#installation)<br>
 3. [Instruments](#instruments)<br>
 4. [Checks](#checks)<br>
 5. [Allure reports](#allure-reports)
-## About
+## ❓ About
 In this project the autotests check main "Qamoodle" course-making site functionality.<br>
 I have chosen _Page Object model_ as a code design pattern to ensure further comfort editing and extension.
-## Installation
+## 💽 Installation
 1. Define a directory on a local machine
 2. Clone the [project](https://github.com/DamirZaripov16/test_ui-project) <br>
    ```git clone https://github.com/DamirZaripov16/test_ui-project```
 3. Open the project
 4. Install all the requirements within **requirements.txt** <br>
    ```pip install -r /path/to/requirements.txt```
-## Instruments
+## ⚙️ Instruments
 ### _**Pytest**_
 * The Easiest and yet the best test-writing tool in Python
 * Multiple tests execution in parallel to reduce general execution time
@@ -36,21 +36,21 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 * Detailed tests execution reports
 * User-friendly dashboard to help to keep in touch with tests state<br>
 * Gives a negative feedback by creating a screenshot<br>
-## Checks
-### **_Signing up check_**
+## ✔️Checks
+### ✔**Signing up check**
 |Positive tests |Required fields negative tests|
 | --- | --- |
 |Filling all the fields with valid data and eventual registration of a new user|Required fields consequent filling with invalid data and unavailable registration of a new user|
 
 **Initial file and detailed docstring-test cases**: ```tests\sign_up\test_sign_up.py```
-### **_Authorization form check_**
+### ✔**Authorization form check**
 |Positive tests| Negative tests|
 | --- | --- |
 |Authorization with valid login and password|Authorization with invalid login and password|
 | |Empty login and password |
 
 **Initial file and detailed docstring-test cases**: ```tests\authentication\test_authentication.py```
-### **_Personal data update check_**
+### ✔**Personal data update check**
 |Positive tests|Negative tests|
 | --- | --- |
 |Editing all the fields with valid data|Editing all the fields with valid data except required ones|
@@ -59,14 +59,14 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 |Tags editing||
 
 **Initial file and detailed docstring-test cases**: ```tests\personal_data\test_personal_data.py```
-### _**Course creation check**_
+### ✔**Course creation check**
 |Positive tests|Negative tests|
 | --- | --- |
 |Course creation/deletion|Unavailable course creation without course fullname|
 | | Unavailable course creation without course shortname|
 
 **Initial file and detailed docstring-test cases**: ```tests\course_creation\test_course_creation.py```
-##  Allure reports
+##  📄 **Allure reports**
 1) Install _**Allure commandline application**_ on your OS<br>
 **Windows-users**:
    1) Run _**PowerShell**_ and install _**Allure commandline application**_ by the following command:
