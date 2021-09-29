@@ -18,7 +18,7 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
    ```git clone https://github.com/DamirZaripov16/test_ui-project```
 3. Open the project
 4. Install all the requirements within **requirements.txt** <br>
-pip install -r /path/to/requirements.txt
+   ```pip install -r /path/to/requirements.txt```
 ## Instruments
 ***
 ### _**Pytest**_
