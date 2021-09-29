@@ -41,6 +41,7 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 | Positive tests | Required fields negative tests |
 | --- | --- |
 | Filling all the fields with valid data and eventual registration of a new user   | Required fields consequent filling with invalid data and unavailable registration of a new user |
+
 **Initial file and detailed docstring-test cases**: ```tests\sign_up\test_sign_up.py```
 ### **_Authorization form check_**
 | Positive tests | Negative tests |
