@@ -64,7 +64,7 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 
 **Initial file and detailed docstring-test cases**: ```tests\course_creation\test_course_creation.py```
 ##  Allure reports
-1) Install _**Allure commandline application**_ on your OS
+1) Install _**Allure commandline application**_ on your OS<br>
 **Windows-users**:
    1) Run _**PowerShell**_ and install _**Allure commandline application**_ by the following command:
    <br>```scoop install allure```<br>
@@ -72,4 +72,4 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
    3) Java is required no matter which installation way you choose<br>
 **Linux and MacOS users** check [this](https://docs.qameta.io/allure/#_installing_a_commandline).
 2) Run ```pytest --alluredir=allure_reports``` on your IDE for tests completion data generation
-3) After tests are completed run ```allure serve allure_reports``` to see tests completion dashboard
+3) Run ```allure serve allure_reports``` to see status dashboard after tests are completed
