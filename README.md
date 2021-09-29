@@ -57,6 +57,7 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 |Setting the user image |Editing the "e-mail" field with invalid data|
 |Editing the additional fields with valid data|Editing the "lastname" field with invalid data|
 |Tags editing||
+
 **Initial file and detailed docstring-test cases**: ```tests\personal_data\test_personal_data.py```
 ### _**Course creation check**_
 |Positive tests|Negative tests|
