@@ -1,7 +1,7 @@
 [![Build Status](https://app.travis-ci.com/DamirZaripov16/test_ui-project.svg?branch=master)](https://app.travis-ci.com/DamirZaripov16/test_ui-project)
 # Autotests for ["Qamoodle"](https://qacoursemoodle.innopolis.university) app
 ## Navigation
-***
+
 1. [About](#about)<br>
 2. [Installation](#installation)<br>
 3. [Instruments](#instruments)<br>
@@ -40,13 +40,33 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 * Gives a negative feedback by creating a screenshot<br>
 ## Checks
 ***
+### **_Signing up check_**
+**Positive tests:**
+* Filling all the fields with valid data and eventual registration of a new user<br>
+
+**Required fields negative tests:**
+* Required fields consequent filling with invalid data and unavailable registration of a new user<br>
+
+**Initial file and detailed docstring-test cases**: tests/sign_up/test_sign_up.py
+
 ### **_Authorization form check_**
 **Positive tests:**
 * Authorization with valid login and valid password<br>
 
 **Negative tests:**
 * Empty login
-* Empty password<br><br>
+* Empty password<br>
+
+**Initial file and detailed docstring-test cases**: tests/authentication/test_authentication.py
+
+### **_Personal data update check_**
+**Positive tests:**
+* Filling all the fields with valid data<br>
+
+**Required fields negative tests:**
+* Required fields consequent filling with invalid data<br>
+
+**Initial file and detailed docstring-test cases**: \tests\personal_data\test_personal_data.py
 
 **Initial file and detailed docstring-test cases**: tests/auth/test_auth.py
 ### _**Course creation check**_
@@ -58,22 +78,7 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 * Unavailable course creation without shortname of the course<br><br>
 
 **Initial file and detailed docstring-test cases**: tests/auth/test_auth.py
-### **_Personal data update check_**
-**Positive tests:**
-* Filling all the fields with valid data<br>
 
-**Required fields negative tests:**
-* Required fields consequent filling with invalid data<br><br>
-
-**Initial file and detailed docstring-test cases**: \tests\personal_data\test_personal_data.py
-### **_Signing up check_**
-**Positive tests:**
-* Filling all the fields with valid data and eventual registration of a new user<br>
-
-**Required fields negative tests:**
-* Required fields consequent filling with invalid data and unavailable registration of a new user<br>
-
-**Initial file and detailed docstring-test cases**: tests/sign_up/test_sign_up.py
 ##  Allure reports
 ***
 1) Install _**Allure commandline application**_ on your OS
