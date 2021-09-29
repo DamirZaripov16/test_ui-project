@@ -41,47 +41,24 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 | Positive tests | Required fields negative tests |
 | --- | --- |
 | Filling all the fields with valid data and eventual registration of a new user   | Required fields consequent filling with invalid data and unavailable registration of a new user |
-
-[comment]: <> (**Positive tests:**)
-
-[comment]: <> (* Filling all the fields with valid data and eventual registration of a new user<br>)
-
-[comment]: <> (**Required fields negative tests:**)
-
-[comment]: <> (* Required fields consequent filling with invalid data and unavailable registration of a new user<br>)
-
-[comment]: <> (**Initial file and detailed docstring-test cases**: tests/sign_up/test_sign_up.py)
-
+**Initial file and detailed docstring-test cases**: ```tests\sign_up\test_sign_up.py```
 ### **_Authorization form check_**
-**Positive tests:**
-* Authorization with valid login and valid password<br>
-
-**Negative tests:**
-* Empty login
-* Empty password<br>
-
-**Initial file and detailed docstring-test cases**: tests/authentication/test_authentication.py
-
+| Positive tests | Negative tests |
+| --- | --- |
+| Authorization with valid login and valid password   | Empty login|
+| | Empty password |
+**Initial file and detailed docstring-test cases**: ```tests\authentication\test_authentication.py```
 ### **_Personal data update check_**
-**Positive tests:**
-* Filling all the fields with valid data<br>
-
-**Required fields negative tests:**
-* Required fields consequent filling with invalid data<br>
-
-**Initial file and detailed docstring-test cases**: \tests\personal_data\test_personal_data.py
-
-**Initial file and detailed docstring-test cases**: tests/auth/test_auth.py
+| Positive tests | Required fields negative tests |
+| --- | --- |
+| Filling all the fields with valid data   | Required fields consequent filling with invalid data |
+**Initial file and detailed docstring-test cases**: ```tests\personal_data\test_personal_data.py```
 ### _**Course creation check**_
-**Positive tests:**
-* Course creation/deletion<br>
-
-**Negative tests:**
-* Unavailable course creation without fullname of the course
-* Unavailable course creation without shortname of the course<br><br>
-
-**Initial file and detailed docstring-test cases**: tests/auth/test_auth.py
-
+| Positive tests | Negative tests |
+| --- | --- |
+| Course creation/deletion   | Unavailable course creation without fullname of the course|
+| | Unavailable course creation without shortname of the course |
+**Initial file and detailed docstring-test cases**: ```tests\course_creation\test_course_creation.py```
 ##  Allure reports
 1) Install _**Allure commandline application**_ on your OS
 **Windows-users**:
