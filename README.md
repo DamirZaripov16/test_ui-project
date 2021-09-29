@@ -1,18 +1,16 @@
 [![Build Status](https://app.travis-ci.com/DamirZaripov16/test_ui-project.svg?branch=master)](https://app.travis-ci.com/DamirZaripov16/test_ui-project)
 # Autotests for ["Qamoodle"](https://qacoursemoodle.innopolis.university) app
+***
 ## Navigation
-
 1. [About](#about)<br>
 2. [Installation](#installation)<br>
 3. [Instruments](#instruments)<br>
 4. [Checks](#checks)<br>
 5. [Allure reports](#allure-reports)
 ## About
-***
 In this project the autotests check main "Qamoodle" course-making site functionality.<br>
 I have chosen _Page Object model_ as a code design pattern to ensure further comfort editing and extension.
 ## Installation
-***
 1. Define a directory on a local machine
 2. Clone the [project](https://github.com/DamirZaripov16/test_ui-project) <br>
    ```git clone https://github.com/DamirZaripov16/test_ui-project```
@@ -20,7 +18,6 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 4. Install all the requirements within **requirements.txt** <br>
    ```pip install -r /path/to/requirements.txt```
 ## Instruments
-***
 ### _**Pytest**_
 * The Easiest and yet the best test-writing tool in Python
 * Multiple tests execution in parallel to reduce general execution time
@@ -80,7 +77,6 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 **Initial file and detailed docstring-test cases**: tests/auth/test_auth.py
 
 ##  Allure reports
-***
 1) Install _**Allure commandline application**_ on your OS
 **Windows-users**:
    1) Run _**PowerShell**_ and install _**Allure commandline application**_ by the following command:
