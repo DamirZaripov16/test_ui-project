@@ -38,14 +38,20 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 * Gives a negative feedback by creating a screenshot<br>
 ## Checks
 ### **_Signing up check_**
-**Positive tests:**
-* Filling all the fields with valid data and eventual registration of a new user<br>
+| Positive tests | Required fields negative tests |
+| --- | --- |
+| Filling all the fields with valid data and eventual registration of a new user   | Required fields consequent filling with invalid data and unavailable registration of a new user |
 
-**Required fields negative tests:**
-* Required fields consequent filling with invalid data and unavailable registration of a new user<br>
+[comment]: <> (**Positive tests:**)
 
-**Initial file and detailed docstring-test cases**: tests/sign_up/test_sign_up.py
-___
+[comment]: <> (* Filling all the fields with valid data and eventual registration of a new user<br>)
+
+[comment]: <> (**Required fields negative tests:**)
+
+[comment]: <> (* Required fields consequent filling with invalid data and unavailable registration of a new user<br>)
+
+[comment]: <> (**Initial file and detailed docstring-test cases**: tests/sign_up/test_sign_up.py)
+
 ### **_Authorization form check_**
 **Positive tests:**
 * Authorization with valid login and valid password<br>
