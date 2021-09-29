@@ -11,7 +11,7 @@
 ## ❓ About
 In this project the autotests check main "Qamoodle" course-making site functionality.<br>
 I have chosen _Page Object model_ as a code design pattern to ensure further comfort editing and extension.
-## 💽 Installation
+## ⬇️ Installation
 1. Define a directory on a local machine
 2. Clone the [project](https://github.com/DamirZaripov16/test_ui-project) <br>
    ```git clone https://github.com/DamirZaripov16/test_ui-project```
