@@ -58,7 +58,7 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 * Unavailable course creation without shortname of the course<br><br>
 
 **Initial file and detailed docstring-test cases**: tests/auth/test_auth.py
-### Personal data update check
+### **_Personal data update check_**
 **Positive tests:**
 * Filling all the fields with valid data<br>
 
@@ -66,7 +66,7 @@ I have chosen _Page Object model_ as a code design pattern to ensure further com
 * Required fields consequent filling with invalid data<br><br>
 
 **Initial file and detailed docstring-test cases**: \tests\personal_data\test_personal_data.py
-### Signing up check
+### **_Signing up check_**
 **Positive tests:**
 * Filling all the fields with valid data and eventual registration of a new user<br>
 
